@@ -104,3 +104,17 @@ variable "key_name" {
   type        = string
   default     = "example"
 }
+
+##Route53 Zone 
+#variable "zone_name" {
+#  description = "zone name of route53"
+#  type        = string
+#  default     = "shiratest.net"
+#}
+
+##Route53 Records
+variable "sub_domain_1" {
+  description = "name of sub domain"
+  type        = string
+  default     = "www"
+}
