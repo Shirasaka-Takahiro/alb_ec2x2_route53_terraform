@@ -7,9 +7,13 @@ ex)example-dev-alb-accesslog-bucket
 ■Resources
 <br />
 EC2(web) x 2
+<br />
 EC2(db) x1
+<br />
 ALb x 1(HTTP & HTTPS Listener)
+<br />
 Route53
+<br />
 ACM
 
 ■Deploy
