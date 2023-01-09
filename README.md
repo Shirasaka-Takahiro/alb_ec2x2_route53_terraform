@@ -5,6 +5,7 @@ ex)example-dev-alb-accesslog-bucket
 2. Generate public and private key
 
 ■Resources
+<br />
 EC2(web) x 2
 EC2(db) x1
 ALb x 1(HTTP & HTTPS Listener)
