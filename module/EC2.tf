@@ -2,7 +2,7 @@
 resource "aws_instance" "ec2-web" {
   ami       = var.ami
   count = length(var.public_subnets.subnets)
-  subnet_id = element(values(aws_subnet.public_subnets[*].id, count.index % 2))
+  subnet_id = element(values(aws_subnet.public_subnets)[*].id, count.index % 2)
   vpc_security_group_ids = [
     aws_security_group.common.id,
     aws_security_group.ec2.id
@@ -42,10 +42,10 @@ resource "aws_instance" "ec2-db" {
 resource "aws_eip" "eip_ec2" {
   vpc      = true
   count = length(aws_instance.ec2-web)
-  instance = element(aws_instance.ec2.*.id, count.index + 1)
+  instance = element(aws_instance.ec2-web.*.id, count.index % 2)
 
   tags = {
-    Name = "${var.general_config["project"]}-${var.general_config["env"]}-${format("eip02d", count.index + 1)}"
+    Name = "${var.general_config["project"]}-${var.general_config["env"]}-${format("eip%02d", count.index + 1)}"
   }
 }
 
