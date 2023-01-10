@@ -10,6 +10,13 @@ resource "aws_security_group" "common" {
     protocol    = "-1"
   }
 
+  egress {
+    cidr_blocks = ["0.0.0.0/0"]
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+  }
+
   tags = {
     Name = "${var.general_config["project"]}-${var.general_config["env"]}-common-sg"
   }
