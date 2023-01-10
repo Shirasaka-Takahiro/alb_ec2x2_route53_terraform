@@ -102,7 +102,6 @@ variable "volume_size" {
 variable "key_name" {
   description = "key name of the key pair"
   type        = string
-  default     = "example"
 }
 
 variable "public_key_path" {
