@@ -105,6 +105,11 @@ variable "key_name" {
   default     = "example"
 }
 
+variable "public_key_path" {
+  description = "key path of the public key. Example: ~/.ssh/terraform.pub"
+  type = string
+}
+
 ##Route53 Zone 
 #variable "zone_name" {
 #  description = "zone name of route53"

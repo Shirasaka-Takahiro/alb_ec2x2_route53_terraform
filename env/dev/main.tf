@@ -38,6 +38,7 @@ module "dev" {
   private_subnet_ids = module.dev.private_subnet_ids
   ami                = var.ami
   key_name           = var.key_name
+  public_key_path = var.public_key_path
   instance_type      = var.instance_type
   volume_type        = var.volume_type
   volume_size        = var.volume_size
