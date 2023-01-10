@@ -106,7 +106,7 @@ variable "key_name" {
 
 variable "public_key_path" {
   description = "key path of the public key. Example: ~/.ssh/terraform.pub"
-  type = string
+  type        = string
 }
 
 ##Route53 Zone 

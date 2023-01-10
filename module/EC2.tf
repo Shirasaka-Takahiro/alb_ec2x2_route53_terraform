@@ -14,6 +14,15 @@ resource "aws_instance" "ec2-web" {
     volume_size = var.volume_size
   }
 
+  user_data = <<EOF
+  #!/bin/bash
+  yum -y install amazon-efs-utils
+  mkdir /mnt/share
+  mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2s ${aws_efs_file_system.efs_file_system.dns_name}:/ /mnt/share
+  echo ${aws_efs_file_system.efs_file_system.dns_name}:/ /mnt/share efs defaults,_netdev 0 0 >> /etc/fstab
+  mount -a
+  EOF
+
   tags = {
     Name = "${var.general_config["project"]}-${var.general_config["env"]}-${format("web%02d", count.index + 1)}"
   }
